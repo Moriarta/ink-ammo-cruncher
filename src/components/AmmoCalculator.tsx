@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+
 
 interface CalculationResults {
   totalAttacks: number;
@@ -176,7 +176,7 @@ const AmmoCalculator = () => {
             </Select>
           </div>
 
-          <Separator className="my-4 border-ink-border" />
+          <div className="border-t border-ink-border my-4" />
 
           {/* Results */}
           <div className="space-y-3 p-3 border border-ink-border rounded bg-secondary/50">
