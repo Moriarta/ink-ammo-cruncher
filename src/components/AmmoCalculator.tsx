@@ -15,7 +15,7 @@ interface CalculationResults {
 const AmmoCalculator = () => {
   const [baseAttackRoll, setBaseAttackRoll] = useState("6");
   const [additionalModifier, setAdditionalModifier] = useState<string>("0");
-  const [hitThreshold, setHitThreshold] = useState<string>("");
+  const [hitThreshold, setHitThreshold] = useState("14");
   const [damage, setDamage] = useState(5);
   const [ammoSpent, setAmmoSpent] = useState<string>("0");
   const [extraAmmo, setExtraAmmo] = useState<string>("0");
@@ -116,11 +116,11 @@ const AmmoCalculator = () => {
                 <SelectValue placeholder="Select threshold" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="10">12</SelectItem>
+                <SelectItem value="10">10</SelectItem>
                 <SelectItem value="12">12</SelectItem>
                 <SelectItem value="14">14</SelectItem>
                 <SelectItem value="16">16</SelectItem>
-                <SelectItem value="18">16</SelectItem>
+                <SelectItem value="18">18</SelectItem>
                 <SelectItem value="20">20</SelectItem>
               </SelectContent>
             </Select>
