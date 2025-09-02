@@ -13,10 +13,10 @@ interface CalculationResults {
 }
 
 const AmmoCalculator = () => {
-  const [baseAttackRoll, setBaseAttackRoll] = useState<string>("");
+  const [baseAttackRoll, setBaseAttackRoll] = useState("6");
   const [additionalModifier, setAdditionalModifier] = useState<string>("0");
   const [hitThreshold, setHitThreshold] = useState<string>("");
-  const [damage, setDamage] = useState<string>("");
+  const [damage, setDamage] = useState(5);
   const [ammoSpent, setAmmoSpent] = useState<string>("0");
   const [extraAmmo, setExtraAmmo] = useState<string>("0");
 
@@ -37,15 +37,17 @@ const AmmoCalculator = () => {
     const finalAttackBonus = baseAttack + modifier - attackPenalty;
     
     // Calculate hit probability (need to roll >= threshold on d20)
-    // Account for natural 1 always missing and natural 20 always hitting
     let hitProbability = 0;
-    if (finalAttackBonus + 20 < threshold) {
-      hitProbability = 5; // Only natural 20 hits (5%)
-    } else if (finalAttackBonus + 1 >= threshold) {
-      hitProbability = 95; // Only natural 1 misses (95%)
+    const neededRoll = threshold - finalAttackBonus;
+    if (neededRoll <= 1) {
+      // Any roll will succeed
+      hitProbability = 100;
+    } else if (neededRoll > 20) {
+      // No roll can succeed
+      hitProbability = 0;
     } else {
-      const neededRoll = threshold - finalAttackBonus;
-      hitProbability = ((20 - neededRoll + 1) / 20) * 100;
+      // Probability is number of successful rolls / 20
+      hitProbability = ((21 - neededRoll) / 20) * 100;
     }
 
     return {
@@ -61,7 +63,7 @@ const AmmoCalculator = () => {
       <Card className="w-full max-w-md border-ink-border bg-card shadow-lg">
         <CardHeader className="text-center border-b border-ink-border">
           <CardTitle className="text-xl font-bold text-ink-primary">
-            TTRPG Ammo Calculator
+            Marksman Ammo Calculator
           </CardTitle>
         </CardHeader>
         
@@ -88,7 +90,7 @@ const AmmoCalculator = () => {
           {/* Additional Modifier */}
           <div className="space-y-2">
             <Label htmlFor="modifier" className="text-sm font-medium text-ink-accent">
-              Additional Modifier
+              External Modifier (cover etc.)
             </Label>
             <Select value={additionalModifier} onValueChange={setAdditionalModifier}>
               <SelectTrigger className="w-full">
@@ -114,9 +116,11 @@ const AmmoCalculator = () => {
                 <SelectValue placeholder="Select threshold" />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="10">12</SelectItem>
                 <SelectItem value="12">12</SelectItem>
                 <SelectItem value="14">14</SelectItem>
                 <SelectItem value="16">16</SelectItem>
+                <SelectItem value="18">16</SelectItem>
                 <SelectItem value="20">20</SelectItem>
               </SelectContent>
             </Select>
@@ -131,7 +135,7 @@ const AmmoCalculator = () => {
               id="damage"
               type="number"
               value={damage}
-              onChange={(e) => setDamage(e.target.value)}
+              onChange={(e) => setDamage(Number(e.target.value))}
               placeholder="Enter damage"
               className="w-full"
               min="1"
@@ -160,7 +164,7 @@ const AmmoCalculator = () => {
           {/* Extra Ammo for Penalty Reduction */}
           <div className="space-y-2">
             <Label htmlFor="extra-ammo" className="text-sm font-medium text-ink-accent">
-              Extra Ammo (Penalty Reduction)
+              Precise Shots (Penalty reduction /1 ammo)
             </Label>
             <Select value={extraAmmo} onValueChange={setExtraAmmo}>
               <SelectTrigger className="w-full">
