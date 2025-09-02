@@ -193,14 +193,7 @@ const AmmoCalculator = () => {
               </div>
               
               <div className="text-center">
-                <div className="text-ink-secondary">Attack Penalty</div>
-                <div className="text-xl font-bold text-destructive">
-                  -{calculations.attackPenalty}
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-ink-secondary">Final Attack Bonus</div>
+                <div className="text-ink-secondary">Final Attack Roll</div>
                 <div className="text-xl font-bold text-ink-accent">
                   {calculations.finalAttackBonus >= 0 ? '+' : ''}{calculations.finalAttackBonus}
                 </div>
