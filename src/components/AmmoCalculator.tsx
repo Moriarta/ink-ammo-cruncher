@@ -205,16 +205,14 @@ const AmmoCalculator = () => {
                   {calculations.hitProbability}%
                 </div>
               </div>
-            </div>
-
-            {damage && (
-              <div className="text-center pt-2 border-t border-ink-border">
-                <div className="text-ink-secondary text-sm">Expected Damage</div>
-                <div className="text-lg font-bold text-ink-accent">
-                  {Math.round((calculations.totalAttacks * (calculations.hitProbability / 100) * parseInt(damage || "0")) * 10) / 10}
+              
+              <div className="text-center">
+                <div className="text-ink-secondary">Expected Damage</div>
+                <div className="text-xl font-bold text-ink-accent">
+                  {damage ? Math.round((calculations.totalAttacks * (calculations.hitProbability / 100) * parseInt(damage || "0")) * 10) / 10 : 0}
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </CardContent>
       </Card>
