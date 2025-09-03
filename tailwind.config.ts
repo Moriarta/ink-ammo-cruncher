@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-			heading: ["'Special Elite'", "serif"],
-			body: ["'Special Elite'", "serif"]
+				heading: ["Special Elite", "serif"],
+				body: ["Special Elite", "serif"]
 		  },
 			colors: {
 				border: 'hsl(var(--border))',
