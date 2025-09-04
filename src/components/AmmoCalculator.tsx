@@ -59,7 +59,7 @@ const AmmoCalculator = () => {
   }, [baseAttackRoll, additionalModifier, hitThreshold, ammoSpent, extraAmmo]);
 
   return (
-    <div className="max-h-screen bg-background p-4 flex items-center justify-center">
+    <div className="h-screen bg-background p-4 flex items-center justify-center">
       <Card className="w-full max-w-md border-ink-border bg-card shadow-lg">
         <CardHeader className="text-center border-b border-ink-border">
           <CardTitle className="text-xl font-bold text-ink-primary">
@@ -67,9 +67,9 @@ const AmmoCalculator = () => {
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="h-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-fr gap-4 p-4">
+        <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-fr gap-4 p-4">
           {/* Base Attack Roll */}
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="base-attack" className="text-sm font-medium text-ink-accent">
               Base Attack Roll
             </Label>
@@ -88,7 +88,7 @@ const AmmoCalculator = () => {
           </div>
 
           {/* Additional Modifier */}
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="modifier" className="text-sm font-medium text-ink-accent">
               External Modifier (cover etc.)
             </Label>
@@ -107,7 +107,7 @@ const AmmoCalculator = () => {
           </div>
 
           {/* Hit Threshold */}
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="threshold" className="text-sm font-medium text-ink-accent">
               Hit Threshold
             </Label>
@@ -127,7 +127,7 @@ const AmmoCalculator = () => {
           </div>
 
           {/* Damage */}
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="damage" className="text-sm font-medium text-ink-accent">
               Damage
             </Label>
@@ -143,7 +143,7 @@ const AmmoCalculator = () => {
           </div>
 
           {/* Ammo Spent */}
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="ammo-spent" className="text-sm font-medium text-ink-accent">
               Ammo Spent
             </Label>
@@ -162,7 +162,7 @@ const AmmoCalculator = () => {
           </div>
 
           {/* Extra Ammo for Penalty Reduction */}
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="extra-ammo" className="text-sm font-medium text-ink-accent">
               Precise Shots (Penalty reduction /1 ammo)
             </Label>
@@ -179,11 +179,11 @@ const AmmoCalculator = () => {
               </SelectContent>
             </Select>
           </div>
-
+          </CardContent>
           <div className="border-t border-ink-border my-4" />
 
           {/* Results */}
-          <div className="space-y-3 p-3 border border-ink-border rounded bg-secondary/50">
+          <CardContent className="space-y-3 p-3 border border-ink-border rounded bg-secondary/50">
             <div className="text-center">
               <h3 className="text-lg font-semibold text-ink-primary mb-3">Results</h3>
             </div>
