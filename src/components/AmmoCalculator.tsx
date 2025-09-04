@@ -23,7 +23,7 @@ const AmmoCalculator = () => {
   const calculations: CalculationResults = useMemo(() => {
     const baseAttack = parseInt(baseAttackRoll) || 0;
     const modifier = parseInt(additionalModifier) || 0;
-    const threshold = parseInt(hitThreshold) || 12;
+    const threshold = parseInt(hitThreshold) || 0;
     const ammo = parseInt(ammoSpent) || 0;
     const extra = parseInt(extraAmmo) || 0;
 
@@ -67,7 +67,7 @@ const AmmoCalculator = () => {
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="p-4 space-y-4">
+        <CardContent className="h-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-fr gap-4 p-4">
           {/* Base Attack Roll */}
           <div className="space-y-2">
             <Label htmlFor="base-attack" className="text-sm font-medium text-ink-accent">
