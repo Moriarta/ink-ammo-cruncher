@@ -59,7 +59,7 @@ const AmmoCalculator = () => {
   }, [baseAttackRoll, additionalModifier, hitThreshold, ammoSpent, extraAmmo]);
 
   return (
-    <div className="min-h-screen bg-background p-4 flex items-center justify-center">
+    <div className="max-h-screen bg-background p-4 flex items-center justify-center">
       <Card className="w-full max-w-md border-ink-border bg-card shadow-lg">
         <CardHeader className="text-center border-b border-ink-border">
           <CardTitle className="text-xl font-bold text-ink-primary">
