@@ -67,7 +67,7 @@ const AmmoCalculator = () => {
           </CardTitle>
         </CardHeader>
         
-        <CardContent className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 auto-rows-fr gap-4 p-4">
+        <CardContent className="grid grid-cols-2 auto-rows-fr gap-4 p-4">
           {/* Base Attack Roll */}
           <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="base-attack" className="text-sm font-medium text-ink-accent">
@@ -90,7 +90,7 @@ const AmmoCalculator = () => {
           {/* Additional Modifier */}
           <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="modifier" className="text-sm font-medium text-ink-accent">
-              External Modifier (cover etc.)
+              Ext. Modifier
             </Label>
             <Select value={additionalModifier} onValueChange={setAdditionalModifier}>
               <SelectTrigger className="w-full">
@@ -164,7 +164,7 @@ const AmmoCalculator = () => {
           {/* Extra Ammo for Penalty Reduction */}
           <div className="flex flex-col space-y-2 justify-between">
             <Label htmlFor="extra-ammo" className="text-sm font-medium text-ink-accent">
-              Precise Shots (Penalty reduction /1 ammo)
+              Precise Shots
             </Label>
             <Select value={extraAmmo} onValueChange={setExtraAmmo}>
               <SelectTrigger className="w-full">
